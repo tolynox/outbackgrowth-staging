@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Outback Growth Solutions — Websites That Work as Hard as You Do</title>
+  <meta name="description" content="Professional websites for local Aussie businesses. No big upfront costs. Get online in 5 days. From $99/month."/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --bg:        #070C14;
+      --surface:   #0D1724;
+      --surface2:  #111E2E;
+      --border:    rgba(255,255,255,0.07);
+      --border2:   rgba(255,255,255,0.12);
+      --gold:      #F5A623;
+      --gold-dim:  rgba(245,166,35,0.15);
+      --gold-glow: rgba(245,166,35,0.25);
+      --blue:      #4A9EFF;
+      --blue-dim:  rgba(74,158,255,0.12);
+      --green:     #10B981;
+      --red:       #EF4444;
+      --white:     #F8FAFC;
+      --muted:     #94A3B8;
+      --subtle:    #4A5568;
+      --radius:    14px;
+    }
+    html{scroll-behavior:smooth}
+    body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--white);line-height:1.6;overflow-x:hidden}
+    a{text-decoration:none;color:inherit}
+    img{max-width:100%}
+
+    /* ── UTILS ── */
+    .container{width:100%;max-width:1160px;margin:0 auto;padding:0 5%}
+    .tag{display:inline-block;padding:5px 14px;border-radius:100px;font-size:0.72rem;font-weight:700;letter-spacing:0.07em;text-transform:uppercase}
+    .tag-gold{background:var(--gold-dim);color:var(--gold);border:1px solid rgba(245,166,35,0.3)}
+    .tag-blue{background:var(--blue-dim);color:var(--blue);border:1px solid rgba(74,158,255,0.2)}
+    .tag-muted{background:rgba(255,255,255,0.06);color:var(--muted);border:1px solid var(--border2)}
+    .chk{color:var(--green);font-weight:700;flex-shrink:0}
+    .cross{color:var(--subtle);flex-shrink:0}
+    section{padding:100px 0}
+
+    /* ── NAV ── */
+    nav{
+      position:sticky;top:0;z-index:100;
+      padding:0 5%;height:72px;
+      display:flex;align-items:center;justify-content:space-between;
+      background:rgba(7,12,20,0.85);
+      backdrop-filter:blur(20px);
+      border-bottom:1px solid var(--border);
+    }
+    .nav-logo{display:flex;align-items:center;gap:12px}
+    .nav-logo-mark{width:36px;height:36px;flex-shrink:0}
+    .nav-wordmark{line-height:1.15}
+    .nav-wordmark-top{font-size:0.88rem;font-weight:800;color:var(--white);letter-spacing:-0.01em}
+    .nav-wordmark-sub{font-size:0.65rem;font-weight:500;color:var(--muted);letter-spacing:0.05em;text-transform:uppercase}
+    .nav-links{display:flex;align-items:center;gap:32px}
+    .nav-links a{font-size:0.85rem;font-weight:500;color:var(--muted);transition:color 0.2s}
+    .nav-links a:hover{color:var(--white)}
+    .nav-cta{
+      background:var(--gold);color:#07090F;
+      padding:10px 22px;border-radius:8px;
+      font-size:0.85rem;font-weight:700;
+      transition:opacity 0.2s,transform 0.15s;
+      white-space:nowrap;
+    }
+    .nav-cta:hover{opacity:0.9;transform:translateY(-1px)}
+    .nav-mobile-cta{display:none}
+    @media(max-width:768px){
+      .nav-links{display:none}
+      .nav-mobile-cta{display:block}
+    }
+
+    /* ── HERO ── */
+    .hero{
+      min-height:92vh;display:flex;align-items:center;
+      padding:120px 0 100px;position:relative;overflow:hidden;
+    }
+    .hero-bg{
+      position:absolute;inset:0;pointer-events:none;
+      background:
+        radial-gradient(ellipse 80% 60% at 60% 30%, rgba(245,166,35,0.07) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 20% 70%, rgba(74,158,255,0.06) 0%, transparent 55%);
+    }
+    .hero-grid-lines{
+      position:absolute;inset:0;
+      background-image:linear-gradient(rgba(255,255,255,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.025) 1px,transparent 1px);
+      background-size:60px 60px;
+      mask-image:radial-gradient(ellipse 80% 70% at 50% 50%,black 30%,transparent 100%);
+    }
+    .hero-inner{position:relative;z-index:1;max-width:760px}
+    .hero-eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:28px;flex-wrap:wrap}
+    .hero-eyebrow-dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 0 3px rgba(16,185,129,0.2)}
+    .hero-eyebrow-text{font-size:0.8rem;font-weight:600;color:var(--muted)}
+    h1{
+      font-size:clamp(2.4rem,5.5vw,4rem);
+      font-weight:900;line-height:1.08;
+      letter-spacing:-0.03em;
+      color:var(--white);
+      margin-bottom:28px;
+    }
+    h1 .gold{color:var(--gold)}
+    h1 .dim{color:var(--muted)}
+    .hero-sub{
+      font-size:clamp(1rem,2vw,1.15rem);
+      color:var(--muted);line-height:1.75;
+      max-width:580px;margin-bottom:44px;
+    }
+    .hero-sub strong{color:var(--white);font-weight:600}
+    .hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:56px}
+    .btn-primary{
+      display:inline-flex;align-items:center;gap:9px;
+      background:var(--gold);color:#07090F;
+      padding:15px 28px;border-radius:10px;
+      font-size:0.95rem;font-weight:700;
+      transition:transform 0.15s,box-shadow 0.2s;
+      border:none;cursor:pointer;
+    }
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 32px var(--gold-glow)}
+    .btn-ghost{
+      display:inline-flex;align-items:center;gap:9px;
+      background:transparent;color:var(--white);
+      padding:15px 28px;border-radius:10px;
+      font-size:0.95rem;font-weight:600;
+      border:1.5px solid var(--border2);
+      transition:border-color 0.2s,background 0.2s;
+      cursor:pointer;
+    }
+    .btn-ghost:hover{border-color:rgba(255,255,255,0.3);background:rgba(255,255,255,0.05)}
+    .hero-proof{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+    .proof-item{display:flex;align-items:center;gap:8px}
+    .proof-item svg{width:16px;height:16px;stroke:var(--green);fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+    .proof-item span{font-size:0.82rem;color:var(--muted);font-weight:500}
+
+    /* ── TRUST BAR ── */
+    .trust-bar{
+      border-top:1px solid var(--border);
+      border-bottom:1px solid var(--border);
+      padding:28px 5%;
+      display:flex;align-items:center;justify-content:center;gap:48px;
+      flex-wrap:wrap;background:var(--surface);
+    }
+    .trust-stat{text-align:center}
+    .trust-num{font-size:1.8rem;font-weight:900;color:var(--white);letter-spacing:-0.03em;line-height:1}
+    .trust-num span{color:var(--gold)}
+    .trust-label{font-size:0.72rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:0.06em;margin-top:5px}
+    .trust-divider{width:1px;height:40px;background:var(--border2)}
+    @media(max-width:600px){.trust-divider{display:none}}
+
+    /* ── SECTION HEADERS ── */
+    .section-header{text-align:center;margin-bottom:64px}
+    h2{font-size:clamp(1.8rem,3.5vw,2.7rem);font-weight:800;letter-spacing:-0.02em;line-height:1.15;margin-bottom:16px}
+    .section-lead{font-size:1rem;color:var(--muted);max-width:560px;margin:0 auto;line-height:1.75}
+    h3{font-size:1.05rem;font-weight:700;color:var(--white);margin-bottom:8px}
+
+    /* ── STORY / PROBLEM ── */
+    .story{background:var(--bg)}
+    .story-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+    .story-left{}
+    .story-left .tag{margin-bottom:20px}
+    .story-left h2{text-align:left;margin-bottom:20px}
+    .story-left p{font-size:0.95rem;color:var(--muted);line-height:1.8;margin-bottom:16px}
+    .story-left p strong{color:var(--white);font-weight:600}
+    .story-pain{
+      margin-top:28px;display:flex;flex-direction:column;gap:12px;
+    }
+    .pain-item{
+      display:flex;align-items:flex-start;gap:14px;
+      background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.15);
+      border-radius:10px;padding:14px 16px;
+    }
+    .pain-icon{font-size:1.1rem;flex-shrink:0;margin-top:1px}
+    .pain-text{font-size:0.85rem;color:rgba(255,255,255,0.7);line-height:1.5}
+    .story-right{display:flex;flex-direction:column;gap:16px}
+    .fix-card{
+      background:var(--surface);border:1px solid var(--border);
+      border-radius:var(--radius);padding:22px;
+      display:flex;gap:16px;align-items:flex-start;
+      transition:border-color 0.2s;
+    }
+    .fix-card:hover{border-color:var(--border2)}
+    .fix-icon{
+      width:42px;height:42px;border-radius:10px;
+      background:var(--gold-dim);border:1px solid rgba(245,166,35,0.2);
+      display:flex;align-items:center;justify-content:center;flex-shrink:0;
+      font-size:1.1rem;
+    }
+    .fix-title{font-size:0.9rem;font-weight:700;color:var(--white);margin-bottom:4px}
+    .fix-desc{font-size:0.8rem;color:var(--muted);line-height:1.55}
+
+    /* ── HOW IT WORKS ── */
+    .how{background:var(--surface)}
+    .how-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;position:relative}
+    .how-steps::before{
+      content:'';position:absolute;
+      top:30px;left:calc(16.66% + 24px);right:calc(16.66% + 24px);
+      height:1px;background:linear-gradient(90deg,var(--border2),rgba(245,166,35,0.3),var(--border2));
+    }
+    .how-step{position:relative;text-align:center;padding-top:0}
+    .step-num{
+      width:60px;height:60px;border-radius:50%;
+      border:1.5px solid var(--gold);
+      background:var(--bg);
+      display:flex;align-items:center;justify-content:center;
+      font-size:1.1rem;font-weight:900;color:var(--gold);
+      margin:0 auto 24px;position:relative;z-index:1;
+    }
+    .how-step h3{margin-bottom:10px}
+    .how-step p{font-size:0.85rem;color:var(--muted);line-height:1.7}
+    .how-step .step-tool{
+      margin-top:14px;display:inline-flex;align-items:center;gap:6px;
+      background:var(--gold-dim);border:1px solid rgba(245,166,35,0.2);
+      border-radius:6px;padding:5px 12px;
+      font-size:0.72rem;font-weight:700;color:var(--gold);letter-spacing:0.04em;
+    }
+
+    /* ── WHAT YOU GET ── */
+    .features{background:var(--bg)}
+    .features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .feature-card{
+      background:var(--surface);border:1px solid var(--border);
+      border-radius:var(--radius);padding:26px;
+      transition:border-color 0.2s,transform 0.2s;
+    }
+    .feature-card:hover{border-color:var(--border2);transform:translateY(-3px)}
+    .feature-icon{
+      width:46px;height:46px;border-radius:12px;
+      display:flex;align-items:center;justify-content:center;
+      margin-bottom:18px;font-size:1.2rem;
+    }
+    .feature-icon-gold{background:var(--gold-dim);border:1px solid rgba(245,166,35,0.2)}
+    .feature-icon-blue{background:var(--blue-dim);border:1px solid rgba(74,158,255,0.15)}
+    .feature-card h3{font-size:0.92rem;margin-bottom:8px}
+    .feature-card p{font-size:0.8rem;color:var(--muted);line-height:1.65}
+
+    /* ── PRICING ── */
+    .pricing{background:var(--surface)}
+    .pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:980px;margin:0 auto}
+    .price-card{
+      background:var(--bg);border:1.5px solid var(--border);
+      border-radius:18px;padding:32px;
+      display:flex;flex-direction:column;
+      position:relative;transition:border-color 0.2s,transform 0.2s;
+    }
+    .price-card:hover{transform:translateY(-4px)}
+    .price-card.featured{
+      background:linear-gradient(160deg,#0D1F35 0%,#071524 100%);
+      border-color:var(--gold);
+      box-shadow:0 0 0 1px rgba(245,166,35,0.15),0 24px 64px rgba(245,166,35,0.08);
+    }
+    .price-card.premium-card{border-color:rgba(74,158,255,0.3)}
+    .popular-badge{
+      position:absolute;top:-14px;left:50%;transform:translateX(-50%);
+      background:var(--gold);color:#07090F;
+      padding:4px 18px;border-radius:100px;
+      font-size:0.7rem;font-weight:800;letter-spacing:0.05em;text-transform:uppercase;white-space:nowrap;
+    }
+    .plan-name{font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);margin-bottom:12px}
+    .plan-price{font-size:3rem;font-weight:900;letter-spacing:-0.03em;color:var(--white);line-height:1}
+    .plan-price sup{font-size:1.2rem;font-weight:700;vertical-align:top;margin-top:8px}
+    .plan-price sub{font-size:0.85rem;font-weight:500;color:var(--muted);vertical-align:bottom;margin-bottom:4px}
+    .plan-desc{font-size:0.82rem;color:var(--muted);line-height:1.6;margin:14px 0 24px;min-height:52px}
+    .plan-divider{height:1px;background:var(--border);margin-bottom:24px}
+    .plan-features{list-style:none;display:flex;flex-direction:column;gap:10px;flex:1;margin-bottom:28px}
+    .plan-features li{display:flex;align-items:flex-start;gap:10px;font-size:0.82rem;color:var(--muted);line-height:1.45}
+    .plan-features li.active{color:rgba(255,255,255,0.85)}
+    .plan-features li strong{color:var(--white);font-weight:600}
+    .plan-cta{
+      display:block;text-align:center;padding:14px;border-radius:10px;
+      font-size:0.9rem;font-weight:700;
+      transition:all 0.2s;cursor:pointer;border:none;
+    }
+    .plan-cta-gold{background:var(--gold);color:#07090F}
+    .plan-cta-gold:hover{opacity:0.9;transform:translateY(-1px);box-shadow:0 8px 24px var(--gold-glow)}
+    .plan-cta-outline{background:transparent;color:var(--white);border:1.5px solid var(--border2)}
+    .plan-cta-outline:hover{border-color:rgba(255,255,255,0.3);background:rgba(255,255,255,0.05)}
+    .plan-cta-blue{background:rgba(74,158,255,0.15);color:var(--blue);border:1.5px solid rgba(74,158,255,0.3)}
+    .plan-cta-blue:hover{background:rgba(74,158,255,0.25)}
+    .pricing-note{text-align:center;margin-top:24px;font-size:0.8rem;color:var(--muted)}
+
+    /* ── INCLUDED ALWAYS ── */
+    .always{background:var(--bg)}
+    .always-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+    .always-item{
+      background:var(--surface);border:1px solid var(--border);
+      border-radius:12px;padding:18px;text-align:center;
+    }
+    .always-item-icon{font-size:1.4rem;margin-bottom:10px}
+    .always-item-label{font-size:0.8rem;font-weight:600;color:var(--white);margin-bottom:4px}
+    .always-item-sub{font-size:0.72rem;color:var(--muted)}
+
+    /* ── ABOUT STRIP ── */
+    .about{
+      background:linear-gradient(135deg,var(--surface) 0%,rgba(13,23,36,0.8) 100%);
+      border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+      padding:80px 0;
+    }
+    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+    .about-left{}
+    .about-left h2{text-align:left;margin-bottom:20px}
+    .about-left p{font-size:0.92rem;color:var(--muted);line-height:1.8;margin-bottom:16px}
+    .about-left p strong{color:var(--white)}
+    .about-right{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .about-stat{
+      background:rgba(255,255,255,0.03);border:1px solid var(--border);
+      border-radius:12px;padding:22px;text-align:center;
+    }
+    .about-stat-num{font-size:2rem;font-weight:900;color:var(--gold);letter-spacing:-0.02em;line-height:1}
+    .about-stat-label{font-size:0.75rem;color:var(--muted);margin-top:6px;font-weight:500}
+
+    /* ── FAQ ── */
+    .faq{background:var(--bg)}
+    .faq-list{max-width:720px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
+    .faq-item{
+      background:var(--surface);border:1px solid var(--border);
+      border-radius:12px;overflow:hidden;
+    }
+    .faq-q{
+      width:100%;padding:20px 24px;
+      display:flex;align-items:center;justify-content:space-between;gap:16px;
+      background:none;border:none;cursor:pointer;text-align:left;
+      font-size:0.92rem;font-weight:600;color:var(--white);font-family:inherit;
+      transition:background 0.2s;
+    }
+    .faq-q:hover{background:rgba(255,255,255,0.03)}
+    .faq-q svg{width:18px;height:18px;stroke:var(--muted);flex-shrink:0;transition:transform 0.25s}
+    .faq-q.open svg{transform:rotate(45deg);stroke:var(--gold)}
+    .faq-a{
+      display:none;padding:0 24px 20px;
+      font-size:0.85rem;color:var(--muted);line-height:1.75;
+    }
+    .faq-a.open{display:block}
+
+    /* ── FINAL CTA ── */
+    .final-cta{
+      padding:120px 0;
+      background:
+        radial-gradient(ellipse 70% 80% at 50% 100%,rgba(245,166,35,0.08) 0%,transparent 60%),
+        var(--bg);
+      text-align:center;
+    }
+    .final-cta h2{font-size:clamp(2rem,4vw,3rem);max-width:600px;margin:0 auto 20px}
+    .final-cta p{font-size:1rem;color:var(--muted);max-width:480px;margin:0 auto 40px;line-height:1.75}
+    .final-cta .btn-primary{font-size:1rem;padding:17px 34px}
+    .final-cta-small{margin-top:18px;font-size:0.78rem;color:var(--subtle)}
+
+    /* ── FOOTER ── */
+    footer{
+      border-top:1px solid var(--border);
+      padding:48px 5%;
+      display:grid;grid-template-columns:1fr 1fr 1fr;
+      gap:40px;align-items:start;
+    }
+    .footer-brand p{font-size:0.82rem;color:var(--muted);line-height:1.65;margin-top:14px;max-width:260px}
+    .footer-col h4{font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);margin-bottom:16px}
+    .footer-col ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+    .footer-col ul li a{font-size:0.82rem;color:var(--muted);transition:color 0.2s}
+    .footer-col ul li a:hover{color:var(--white)}
+    .footer-bottom{
+      border-top:1px solid var(--border);
+      padding:24px 5%;
+      display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;
+    }
+    .footer-bottom p{font-size:0.75rem;color:var(--subtle)}
+    .footer-bottom .made-with{font-size:0.75rem;color:var(--subtle)}
+
+    /* ── RESPONSIVE ── */
+    @media(max-width:900px){
+      .story-grid,.about-grid{grid-template-columns:1fr}
+      .story-right{order:-1}
+      .how-steps{grid-template-columns:1fr;gap:28px}
+      .how-steps::before{display:none}
+      .features-grid{grid-template-columns:1fr 1fr}
+      .pricing-grid{grid-template-columns:1fr}
+      .always-grid{grid-template-columns:1fr 1fr}
+      footer{grid-template-columns:1fr}
+    }
+    @media(max-width:600px){
+      section{padding:70px 0}
+      .hero{min-height:auto;padding:90px 0 70px}
+      .features-grid{grid-template-columns:1fr}
+      .always-grid{grid-template-columns:1fr 1fr}
+      .about-right{grid-template-columns:1fr 1fr}
+    }
+  </style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════ -->
+<!-- NAV -->
+<!-- ════════════════════════════════════════ -->
+<nav>
+  <a href="#" class="nav-logo">
+    <!-- LOGOMARK SVG -->
+    <svg class="nav-logo-mark" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="36" height="36" rx="9" fill="#F5A623" fill-opacity="0.12"/>
+      <rect x="0.75" y="0.75" width="34.5" height="34.5" rx="8.25" stroke="#F5A623" stroke-opacity="0.3" stroke-width="1.5"/>
+      <!-- Bar chart growth icon -->
+      <rect x="8" y="22" width="4" height="6" rx="1.5" fill="#F5A623" opacity="0.4"/>
+      <rect x="14" y="17" width="4" height="11" rx="1.5" fill="#F5A623" opacity="0.7"/>
+      <rect x="20" y="12" width="4" height="16" rx="1.5" fill="#F5A623"/>
+      <!-- Rising arrow -->
+      <path d="M10 14L18 8L26 12" stroke="#F5A623" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.5"/>
+      <path d="M23 8L26 8L26 11" stroke="#F5A623" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.5"/>
+    </svg>
+    <div class="nav-wordmark">
+      <div class="nav-wordmark-top">Outback Growth</div>
+      <div class="nav-wordmark-sub">Solutions</div>
+    </div>
+  </a>
+  <div class="nav-links">
+    <a href="#how-it-works">How it works</a>
+    <a href="#features">What you get</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#faq">FAQ</a>
+  </div>
+  <a href="#pricing" class="nav-cta nav-mobile-cta" style="display:inline-block">Book a Free Chat →</a>
+  <a href="#pricing" class="nav-cta" style="display:inline-block">Book a Free Chat →</a>
+</nav>
+
+<!-- ════════════════════════════════════════ -->
+<!-- HERO -->
+<!-- ════════════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid-lines"></div>
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-eyebrow">
+        <div class="hero-eyebrow-dot"></div>
+        <span class="hero-eyebrow-text">Serving Regional Queensland & Australia-wide</span>
+        <span class="tag tag-gold">Sites live in 5 days</span>
+      </div>
+      <h1>
+        Your next customer<br/>
+        is searching for you<br/>
+        <span class="gold">right now.</span>
+      </h1>
+      <p class="hero-sub">
+        Every day without a proper website is a day your competitor gets the call instead of you.
+        We build <strong>professional, automated websites</strong> for local Aussie businesses —
+        without the $5,000 upfront bill, the tech headaches, or the waiting.
+      </p>
+      <div class="hero-actions">
+        <a href="#pricing" class="btn-primary">
+          Get My Site Live in 5 Days
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#how-it-works" class="btn-ghost">See How It Works</a>
+      </div>
+      <div class="hero-proof">
+        <div class="proof-item">
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          <span>$0 setup cost</span>
+        </div>
+        <div class="proof-item">
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          <span>Live in 5 business days</span>
+        </div>
+        <div class="proof-item">
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          <span>Cancel anytime after 12 months</span>
+        </div>
+        <div class="proof-item">
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          <span>SSL included on every plan</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════ -->
+<!-- TRUST BAR -->
+<!-- ════════════════════════════════════════ -->
+<div class="trust-bar">
+  <div class="trust-stat">
+    <div class="trust-num">5<span>d</span></div>
+    <div class="trust-label">Avg. time to live site</div>
+  </div>
+  <div class="trust-divider"></div>
+  <div class="trust-stat">
+    <div class="trust-num">$0</div>
+    <div class="trust-label">Setup cost</div>
+  </div>
+  <div class="trust-divider"></div>
+  <div class="trust-stat">
+    <div class="trust-num">30<span>m</span></div>
+    <div class="trust-label">Response time</div>
+  </div>
+  <div class="trust-divider"></div>
+  <div class="trust-stat">
+    <div class="trust-num">3</div>
+    <div class="trust-label">Simple pricing tiers</div>
+  </div>
+  <div class="trust-divider"></div>
+  <div class="trust-stat">
+    <div class="trust-num">100<span>%</span></div>
+    <div class="trust-label">Aussie-based support</div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════ -->
+<!-- STORY / PROBLEM → SOLUTION -->
+<!-- ════════════════════════════════════════ -->
+<section class="story">
+  <div class="container">
+    <div class="story-grid">
+      <div class="story-left">
+        <span class="tag tag-muted" style="margin-bottom:20px">The Problem</span>
+        <h2 style="text-align:left">Running a regional business is hard enough without this.</h2>
+        <p>You're good at what you do. Whether you're a tradie, a local retailer, a salon owner, or a small operator — you've built something real. But when someone searches for your service online, <strong>what do they find?</strong></p>
+        <p>Maybe nothing. Maybe a Facebook page that hasn't been updated in 18 months. Maybe a competitor who got there first because they had a website and you didn't.</p>
+        <p><strong>You're losing customers you don't even know you're losing.</strong></p>
+        <div class="story-pain">
+          <div class="pain-item">
+            <span class="pain-icon">💸</span>
+            <span class="pain-text">Traditional web agencies quote $3,000–$6,000 upfront — before you see a single result</span>
+          </div>
+          <div class="pain-item">
+            <span class="pain-icon">⏳</span>
+            <span class="pain-text">Projects drag on for months while your competitor keeps getting the calls</span>
+          </div>
+          <div class="pain-item">
+            <span class="pain-icon">🤷</span>
+            <span class="pain-text">You end up with a site that looks okay but doesn't actually bring you any business</span>
+          </div>
+        </div>
+      </div>
+      <div class="story-right">
+        <div style="margin-bottom:8px">
+          <span class="tag tag-gold">The Outback Growth Way</span>
+        </div>
+        <div class="fix-card">
+          <div class="fix-icon">⚡</div>
+          <div>
+            <div class="fix-title">Done in days, not months</div>
+            <div class="fix-desc">We have a proven system. You give us 30 minutes of your time. We deliver a live, professional website in 5 business days — guaranteed.</div>
+          </div>
+        </div>
+        <div class="fix-card">
+          <div class="fix-icon">🤖</div>
+          <div>
+            <div class="fix-title">It works while you're on the tools</div>
+            <div class="fix-desc">When someone enquires through your site, they get an instant SMS and email reply — automatically. No more missed leads while you're busy on a job.</div>
+          </div>
+        </div>
+        <div class="fix-card">
+          <div class="fix-icon">💰</div>
+          <div>
+            <div class="fix-title">No big upfront hit to your cash flow</div>
+            <div class="fix-desc">We've removed the $0 setup fee. One simple monthly payment, and you own a fully managed online presence that keeps working for you, month after month.</div>
+          </div>
+        </div>
+        <div class="fix-card">
+          <div class="fix-icon">🇦🇺</div>
+          <div>
+            <div class="fix-title">Local support, not an overseas call centre</div>
+            <div class="fix-desc">When you need something changed, you're talking to us — Aussies who understand regional business. Not a ticket queue that takes 3 days to respond.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════ -->
+<!-- HOW IT WORKS -->
+<!-- ════════════════════════════════════════ -->
+<section class="how" id="how-it-works">
+  <div class="container">
+    <div class="section-header">
+      <span class="tag tag-muted" style="margin-bottom:16px">How it works</span>
+      <h2>From conversation to <span style="color:var(--gold)">customers</span> in three steps</h2>
+      <p class="section-lead">We've designed this to be as painless as possible. You don't need to know anything about websites.</p>
+    </div>
+    <div class="how-steps">
+      <div class="how-step">
+        <div class="step-num">1</div>
+        <h3>Book a free 15-minute chat</h3>
+        <p>Tell us about your business, your goals, and what you need. No tech jargon, no sales pressure. We'll figure out which plan is right for you.</p>
+        <div class="step-tool">Free · No obligation</div>
+      </div>
+      <div class="how-step">
+        <div class="step-num">2</div>
+        <h3>We build everything for you</h3>
+        <p>One 30-minute call to gather your details — logo, photos, services. Then we handle everything. Design, content, automations, SSL, hosting. You don't touch a thing.</p>
+        <div class="step-tool">Live in 5 business days</div>
+      </div>
+      <div class="how-step">
+        <div class="step-num">3</div>
+        <h3>Start getting more enquiries</h3>
+        <p>Your site goes live. Enquiries come in. The automated follow-up system makes sure no lead slips through the cracks. You get back to running your business.</p>
+        <div class="step-tool">Automated from day one</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════ -->
+<!-- WHAT YOU GET -->
+<!-- ════════════════════════════════════════ -->
+<section class="features" id="features">
+  <div class="container">
+    <div class="section-header">
+      <span class="tag tag-muted" style="margin-bottom:16px">What's included</span>
+      <h2>Everything your business needs. <span style="color:var(--gold)">Nothing it doesn't.</span></h2>
+      <p class="section-lead">Every plan includes these essentials. No hidden extras, no surprise bills.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon feature-icon-gold">📱</div>
+        <h3>Mobile-first design</h3>
+        <p>Most of your customers are searching from their phones. Your site looks perfect on every screen — phone, tablet, desktop.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon feature-icon-gold">🔒</div>
+        <h3>SSL Security Certificate</h3>
+        <p>The padlock in the browser. Every site we build comes with a free, auto-renewing SSL certificate. Secure by default — zero extra cost.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon feature-icon-gold">⚡</div>
+        <h3>Instant lead capture</h3>
+        <p>Professional enquiry forms that actually work. When someone fills it out, you get notified immediately — and so does the customer.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon feature-icon-blue">📞</div>
+        <h3>Click-to-call buttons</h3>
+        <p>One tap on your number and the customer is calling you. Tradies get more calls. Salons get more bookings. It's that simple.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon feature-icon-blue">📍</div>
+        <h3>Google Maps embedded</h3>
+        <p>Your location pinned on every site. Customers know exactly where you are and how to get to you. Critical for foot traffic businesses.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon feature-icon-blue">🛡️</div>
+        <h3>Hosting, maintenance & updates</h3>
+        <p>We look after everything technical. Software updates, security patches, uptime monitoring. You'll never get a surprise bill from us.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon feature-icon-gold">🔍</div>
+        <h3>Basic SEO foundation</h3>
+        <p>Built to be found. Your site is structured so Google can read and rank it — giving you a head start on showing up in local search results.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon feature-icon-gold">📧</div>
+        <h3>Automated email response</h3>
+        <p>The moment an enquiry comes in, the customer gets a professional confirmation email. You look reliable and responsive even when you're flat out.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon feature-icon-blue">🇦🇺</div>
+        <h3>Australian-based support</h3>
+        <p>Call us, email us — you're talking to a real person who knows regional Australian business. We respond within 30 minutes during business hours.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════ -->
+<!-- PRICING -->
+<!-- ════════════════════════════════════════ -->
+<section class="pricing" id="pricing">
+  <div class="container">
+    <div class="section-header">
+      <span class="tag tag-muted" style="margin-bottom:16px">Simple, honest pricing</span>
+      <h2>Pick the plan that fits <span style="color:var(--gold)">your business.</span></h2>
+      <p class="section-lead">No setup fees. No lock-in contracts. No surprise bills. Just one predictable monthly payment that you can budget for.</p>
+    </div>
+    <div class="pricing-grid">
+
+      <!-- STARTER -->
+      <div class="price-card">
+        <div class="plan-name">Starter</div>
+        <div class="plan-price"><sup>A$</sup>99<sub>/mo</sub></div>
+        <p class="plan-desc">Get your business online professionally. Perfect if you just need to be found and look credible.</p>
+        <div class="plan-divider"></div>
+        <ul class="plan-features">
+          <li class="active"><span class="chk">✓</span> 3-page custom website</li>
+          <li class="active"><span class="chk">✓</span> Mobile-responsive design</li>
+          <li class="active"><span class="chk">✓</span> Lead capture form</li>
+          <li class="active"><span class="chk">✓</span> Click-to-call button</li>
+          <li class="active"><span class="chk">✓</span> Google Maps embed</li>
+          <li class="active"><span class="chk">✓</span> Basic SEO setup</li>
+          <li class="active"><span class="chk">✓</span> <strong>SSL Security Certificate</strong></li>
+          <li class="active"><span class="chk">✓</span> Hosting + maintenance</li>
+          <li class="active"><span class="chk">✓</span> Email auto-reply on enquiry</li>
+          <li><span class="cross">—</span> SMS automation</li>
+          <li><span class="cross">—</span> Booking calendar</li>
+        </ul>
+        <a href="#contact" class="plan-cta plan-cta-outline">Get Started</a>
+      </div>
+
+      <!-- GROWTH (MOST POPULAR) -->
+      <div class="price-card featured">
+        <div class="popular-badge">⭐ Most Popular</div>
+        <div class="plan-name" style="color:var(--gold)">Growth</div>
+        <div class="plan-price"><sup>A$</sup>139<sub>/mo</sub></div>
+        <p class="plan-desc">A complete lead-generation system that works while you're on the job. The one most regional business owners choose.</p>
+        <div class="plan-divider"></div>
+        <ul class="plan-features">
+          <li class="active"><span class="chk">✓</span> 5-page custom website</li>
+          <li class="active"><span class="chk">✓</span> Mobile-responsive design</li>
+          <li class="active"><span class="chk">✓</span> Lead capture form</li>
+          <li class="active"><span class="chk">✓</span> Click-to-call button</li>
+          <li class="active"><span class="chk">✓</span> Google Maps embed</li>
+          <li class="active"><span class="chk">✓</span> Basic SEO setup</li>
+          <li class="active"><span class="chk">✓</span> <strong>SSL Security Certificate</strong></li>
+          <li class="active"><span class="chk">✓</span> Hosting + maintenance</li>
+          <li class="active"><span class="chk">✓</span> <strong>Email + SMS auto-reply</strong></li>
+          <li class="active"><span class="chk">✓</span> <strong>Automated 48-hr follow-up</strong></li>
+          <li class="active"><span class="chk">✓</span> Priority support (email + phone)</li>
+        </ul>
+        <a href="#contact" class="plan-cta plan-cta-gold">Get Started — A$139/mo</a>
+      </div>
+
+      <!-- PREMIUM -->
+      <div class="price-card premium-card">
+        <div class="plan-name" style="color:var(--blue)">Premium</div>
+        <div class="plan-price"><sup>A$</sup>199<sub>/mo</sub></div>
+        <p class="plan-desc">The full system. Dominate your local market with automation, reputation management, and a Google presence built to win.</p>
+        <div class="plan-divider"></div>
+        <ul class="plan-features">
+          <li class="active"><span class="chk">✓</span> 5-page custom website</li>
+          <li class="active"><span class="chk">✓</span> Mobile-responsive design</li>
+          <li class="active"><span class="chk">✓</span> Lead capture form</li>
+          <li class="active"><span class="chk">✓</span> Click-to-call button</li>
+          <li class="active"><span class="chk">✓</span> Google Maps embed</li>
+          <li class="active"><span class="chk">✓</span> Basic SEO setup</li>
+          <li class="active"><span class="chk">✓</span> <strong>SSL Security Certificate</strong></li>
+          <li class="active"><span class="chk">✓</span> Hosting + maintenance</li>
+          <li class="active"><span class="chk">✓</span> Email + SMS auto-reply</li>
+          <li class="active"><span class="chk">✓</span> Automated 48-hr follow-up</li>
+          <li class="active"><span class="chk">✓</span> <strong>Missed call text-back</strong></li>
+          <li class="active"><span class="chk">✓</span> <strong>Online booking calendar</strong></li>
+          <li class="active"><span class="chk">✓</span> <strong>Review & reputation management</strong></li>
+          <li class="active"><span class="chk">✓</span> <strong>Google Business Profile setup + monthly optimisation</strong></li>
+          <li class="active"><span class="chk">✓</span> Highest priority support</li>
+        </ul>
+        <a href="#contact" class="plan-cta plan-cta-blue">Get Started — A$199/mo</a>
+      </div>
+
+    </div>
+    <p class="pricing-note">All plans include a 12-month minimum term — this is how we waive the $2,000+ setup fee for you. No surprises after that.</p>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════ -->
+<!-- INCLUDED ON EVERY PLAN -->
+<!-- ════════════════════════════════════════ -->
+<section class="always">
+  <div class="container">
+    <div class="section-header">
+      <span class="tag tag-gold" style="margin-bottom:16px">On every plan, always</span>
+      <h2>No asterisks. No fine print.</h2>
+    </div>
+    <div class="always-grid">
+      <div class="always-item">
+        <div class="always-item-icon">🔒</div>
+        <div class="always-item-label">SSL Certificate</div>
+        <div class="always-item-sub">HTTPS on every site, included free</div>
+      </div>
+      <div class="always-item">
+        <div class="always-item-icon">🚀</div>
+        <div class="always-item-label">Fast Hosting</div>
+        <div class="always-item-sub">Reliable, global CDN included</div>
+      </div>
+      <div class="always-item">
+        <div class="always-item-icon">🛠️</div>
+        <div class="always-item-label">Maintenance</div>
+        <div class="always-item-sub">Updates & uptime covered</div>
+      </div>
+      <div class="always-item">
+        <div class="always-item-icon">🇦🇺</div>
+        <div class="always-item-label">Aussie Support</div>
+        <div class="always-item-sub">Real person, 30-min response</div>
+      </div>
+      <div class="always-item">
+        <div class="always-item-icon">📱</div>
+        <div class="always-item-label">Mobile-Ready</div>
+        <div class="always-item-sub">Perfect on every screen</div>
+      </div>
+      <div class="always-item">
+        <div class="always-item-icon">📧</div>
+        <div class="always-item-label">Auto-Response</div>
+        <div class="always-item-sub">Never miss an enquiry</div>
+      </div>
+      <div class="always-item">
+        <div class="always-item-icon">$0</div>
+        <div class="always-item-label">No Setup Fee</div>
+        <div class="always-item-sub">Zero upfront cost</div>
+      </div>
+      <div class="always-item">
+        <div class="always-item-icon">📍</div>
+        <div class="always-item-label">Google Maps</div>
+        <div class="always-item-sub">Embedded on every site</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════ -->
+<!-- ABOUT -->
+<!-- ════════════════════════════════════════ -->
+<section class="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-left">
+        <span class="tag tag-muted" style="margin-bottom:20px">About us</span>
+        <h2 style="text-align:left">Built by someone who<br/>gets <span style="color:var(--gold)">regional business.</span></h2>
+        <p>Outback Growth Solutions was built out of a simple frustration: regional businesses were getting a raw deal. They were either quoted thousands of dollars they didn't have, or they were sold cookie-cutter templates that did nothing for them.</p>
+        <p>We do things differently. <strong>Every site is custom-built for your specific business</strong>, delivered in days, and supported by automation that makes sure every lead gets a response — even when you're too busy to pick up the phone.</p>
+        <p>We're not a faceless agency. We're a local partner that wants to see your business grow.</p>
+        <a href="#pricing" class="btn-primary" style="margin-top:28px;display:inline-flex">
+          Start the Conversation
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+      <div class="about-right">
+        <div class="about-stat">
+          <div class="about-stat-num">5d</div>
+          <div class="about-stat-label">Delivery guarantee</div>
+        </div>
+        <div class="about-stat">
+          <div class="about-stat-num">$0</div>
+          <div class="about-stat-label">Setup cost</div>
+        </div>
+        <div class="about-stat">
+          <div class="about-stat-num">30m</div>
+          <div class="about-stat-label">Support response time</div>
+        </div>
+        <div class="about-stat">
+          <div class="about-stat-num">3</div>
+          <div class="about-stat-label">Clear pricing tiers</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════ -->
+<!-- FAQ -->
+<!-- ════════════════════════════════════════ -->
+<section class="faq" id="faq">
+  <div class="container">
+    <div class="section-header">
+      <span class="tag tag-muted" style="margin-bottom:16px">Questions</span>
+      <h2>The stuff you're probably <span style="color:var(--gold)">wondering about.</span></h2>
+    </div>
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Why is there a 12-month minimum term?
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">The 12-month partnership is how we can waive what would otherwise be a $1,500–$2,500 setup and build fee. Instead of charging you a big lump sum upfront, we spread that cost across the year — making it a manageable monthly expense while you get the full benefit of a professional site from day one. After 12 months, it's month-to-month.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          What if I already have a website?
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">No problem. If your current site is old, slow, or not converting visitors into calls, we can replace it with something that actually works. We'll take care of the switchover so there's no downtime for your business.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          I'm not tech-savvy at all. Is this going to be complicated?
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">That's exactly who we built this for. Your total involvement is one 30-minute call where you tell us about your business. We handle everything else — design, content, hosting, security, automations. You don't need to touch a thing.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          What does the SMS automation actually do?
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">When a customer fills out your enquiry form, they get an instant SMS — something like "Thanks for reaching out! This is [Your Business]. We'll be in touch within the hour." It means the customer knows you got their message and aren't going to disappear. Then if they haven't heard back in 48 hours, another follow-up sends automatically. This alone captures leads that would otherwise go to a competitor.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Do I own my website and domain?
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">You own your domain name — always. It's your asset and we'll help you register it in your own name. The website itself is hosted and maintained by us as part of your monthly plan.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          What's Google Business Profile setup (Premium)?
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Google Business Profile is the listing that shows up when someone searches for your business type on Google Maps — with your hours, photos, services, and reviews. Most local businesses have a poorly optimised (or missing) profile, which means they're invisible in local search. On the Premium plan, we set this up properly and keep it optimised every month, which directly drives more calls and foot traffic.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          How long does it actually take to get my site live?
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">5 business days from your onboarding call — that's our standard. We've built a system that lets us move fast without cutting corners. Day 1: onboarding call. Days 2–3: build. Day 4: you review. Day 5: live.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════ -->
+<!-- FINAL CTA -->
+<!-- ════════════════════════════════════════ -->
+<section class="final-cta" id="contact">
+  <div class="container">
+    <span class="tag tag-gold" style="margin-bottom:24px">Ready to grow?</span>
+    <h2>Your competitor has a website. <span style="color:var(--gold)">Do you?</span></h2>
+    <p>Every week you wait is leads going somewhere else. Let's fix that — one free 15-minute conversation and we'll tell you exactly what you need.</p>
+    <a href="mailto:tony@outbackgrowth.solutions" class="btn-primary">
+      Book My Free 15-Min Chat
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+    <div class="final-cta-small">No sales pressure. No commitment. Just a straight conversation about your business.</div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════ -->
+<!-- FOOTER -->
+<!-- ════════════════════════════════════════ -->
+<footer>
+  <div class="footer-brand">
+    <a href="#" class="nav-logo" style="margin-bottom:0">
+      <svg class="nav-logo-mark" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="36" height="36" rx="9" fill="#F5A623" fill-opacity="0.12"/>
+        <rect x="0.75" y="0.75" width="34.5" height="34.5" rx="8.25" stroke="#F5A623" stroke-opacity="0.3" stroke-width="1.5"/>
+        <rect x="8" y="22" width="4" height="6" rx="1.5" fill="#F5A623" opacity="0.4"/>
+        <rect x="14" y="17" width="4" height="11" rx="1.5" fill="#F5A623" opacity="0.7"/>
+        <rect x="20" y="12" width="4" height="16" rx="1.5" fill="#F5A623"/>
+        <path d="M10 14L18 8L26 12" stroke="#F5A623" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.5"/>
+        <path d="M23 8L26 8L26 11" stroke="#F5A623" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.5"/>
+      </svg>
+      <div class="nav-wordmark">
+        <div class="nav-wordmark-top">Outback Growth</div>
+        <div class="nav-wordmark-sub">Solutions</div>
+      </div>
+    </a>
+    <p>Professional websites for local Aussie businesses. No upfront costs. Live in 5 days. From $99/month.</p>
+  </div>
+  <div class="footer-col">
+    <h4>Plans</h4>
+    <ul>
+      <li><a href="#pricing">Starter — A$99/mo</a></li>
+      <li><a href="#pricing">Growth — A$139/mo</a></li>
+      <li><a href="#pricing">Premium — A$199/mo</a></li>
+    </ul>
+  </div>
+  <div class="footer-col">
+    <h4>Company</h4>
+    <ul>
+      <li><a href="#how-it-works">How it works</a></li>
+      <li><a href="#features">What's included</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="mailto:tony@outbackgrowth.solutions">Contact us</a></li>
+    </ul>
+  </div>
+</footer>
+<div class="footer-bottom">
+  <p>© 2026 Outback Growth Solutions. ABN [Your ABN]. All rights reserved.</p>
+  <p class="made-with">Serving Emerald, QLD & regional Australia</p>
+</div>
+
+<script>
+  function toggleFaq(btn) {
+    const answer = btn.nextElementSibling;
+    const isOpen = btn.classList.contains('open');
+    document.querySelectorAll('.faq-q').forEach(q => {
+      q.classList.remove('open');
+      q.nextElementSibling.classList.remove('open');
+    });
+    if (!isOpen) {
+      btn.classList.add('open');
+      answer.classList.add('open');
+    }
+  }
+</script>
+
+</body>
+</html>
