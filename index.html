@@ -140,23 +140,24 @@
     .hero-left{}
     .hero-right{position:relative;display:flex;align-items:center;justify-content:center}
     .hero-image-wrap{
-      position:relative;border-radius:20px;width:100%;aspect-ratio:3/4;overflow:visible;
+      position:relative;border-radius:20px;width:100%;aspect-ratio:3/4;overflow:hidden;
       border:1px solid var(--border2);
       background:
         radial-gradient(ellipse 70% 50% at 65% 25%,rgba(245,166,35,0.22) 0%,transparent 55%),
         radial-gradient(ellipse 50% 70% at 25% 75%,rgba(74,158,255,0.09) 0%,transparent 50%),
         linear-gradient(160deg,#0F1E10 0%,#1A1406 35%,#0D1418 70%,#070C14 100%);
     }
-    .hero-image-wrap::before{
+    .hero-img{
+      position:absolute;inset:0;width:100%;height:100%;
+      object-fit:cover;object-position:center top;
+      border-radius:20px;display:block;
+    }
+    .hero-image-wrap::after{
       content:'';position:absolute;inset:0;border-radius:20px;
-      background:linear-gradient(180deg,transparent 40%,rgba(7,12,20,0.65) 100%);
-      pointer-events:none;
+      background:linear-gradient(180deg,transparent 50%,rgba(7,12,20,0.55) 100%);
+      pointer-events:none;z-index:1;
     }
-    .hero-img-tag{
-      position:absolute;bottom:18px;left:50%;transform:translateX(-50%);
-      font-size:0.63rem;letter-spacing:0.08em;text-transform:uppercase;
-      color:rgba(255,255,255,0.22);white-space:nowrap;
-    }
+    .hero-img-tag{display:none;}
     .notif-card{
       position:absolute;top:22px;right:-22px;z-index:10;
       background:rgba(13,23,36,0.96);
@@ -536,15 +537,15 @@
       <!-- RIGHT: IMAGE + NOTIFICATION CARD -->
       <div class="hero-right">
         <div class="hero-image-wrap">
-          <div class="hero-img-tag">Hero photo — real image to follow</div>
-          <!-- Phone notification overlay -->
-          <div class="notif-card">
-            <div class="notif-icon">📲</div>
-            <div>
-              <div class="notif-title">New website enquiry</div>
-              <div class="notif-sub">Kitchen reno quote · 07 4XX XXX</div>
-              <div class="notif-time">From your website · Just now</div>
-            </div>
+          <img src="hero.jpg" alt="Regional tradie checking a new website enquiry on her phone, Emerald QLD" class="hero-img"/>
+        </div>
+        <!-- Notification card sits outside image-wrap so overflow:hidden doesn't clip it -->
+        <div class="notif-card">
+          <div class="notif-icon">📲</div>
+          <div>
+            <div class="notif-title">New website enquiry</div>
+            <div class="notif-sub">Kitchen reno quote · 07 4XX XXX</div>
+            <div class="notif-time">From your website · Just now</div>
           </div>
         </div>
       </div>
