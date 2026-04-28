@@ -133,6 +133,53 @@
     .proof-item svg{width:16px;height:16px;stroke:var(--green);fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
     .proof-item span{font-size:0.82rem;color:var(--muted);font-weight:500}
 
+    /* ── HERO SPLIT LAYOUT ── */
+    .hero-split{display:grid;grid-template-columns:58fr 42fr;gap:64px;align-items:center;position:relative;z-index:1}
+    .hero-left{}
+    .hero-right{position:relative;display:flex;align-items:center;justify-content:center}
+    .hero-image-wrap{
+      position:relative;border-radius:20px;width:100%;aspect-ratio:3/4;overflow:visible;
+      border:1px solid var(--border2);
+      background:
+        radial-gradient(ellipse 70% 50% at 65% 25%,rgba(245,166,35,0.22) 0%,transparent 55%),
+        radial-gradient(ellipse 50% 70% at 25% 75%,rgba(74,158,255,0.09) 0%,transparent 50%),
+        linear-gradient(160deg,#0F1E10 0%,#1A1406 35%,#0D1418 70%,#070C14 100%);
+    }
+    .hero-image-wrap::before{
+      content:'';position:absolute;inset:0;border-radius:20px;
+      background:linear-gradient(180deg,transparent 40%,rgba(7,12,20,0.65) 100%);
+      pointer-events:none;
+    }
+    .hero-img-tag{
+      position:absolute;bottom:18px;left:50%;transform:translateX(-50%);
+      font-size:0.63rem;letter-spacing:0.08em;text-transform:uppercase;
+      color:rgba(255,255,255,0.22);white-space:nowrap;
+    }
+    .notif-card{
+      position:absolute;top:22px;right:-22px;z-index:10;
+      background:rgba(13,23,36,0.96);
+      border:1px solid rgba(245,166,35,0.4);
+      border-radius:14px;padding:14px 16px;
+      display:flex;gap:12px;align-items:flex-start;
+      min-width:220px;
+      box-shadow:0 20px 56px rgba(0,0,0,0.55),0 0 0 1px rgba(245,166,35,0.08);
+      backdrop-filter:blur(16px);
+    }
+    .notif-icon{
+      width:34px;height:34px;border-radius:9px;flex-shrink:0;
+      background:var(--gold-dim);border:1px solid rgba(245,166,35,0.25);
+      display:flex;align-items:center;justify-content:center;font-size:0.95rem;
+    }
+    .notif-title{font-size:0.8rem;font-weight:700;color:var(--white);line-height:1.3;margin-bottom:3px}
+    .notif-sub{font-size:0.72rem;color:var(--muted);line-height:1.4;margin-bottom:4px}
+    .notif-time{font-size:0.65rem;color:var(--green);font-weight:600;letter-spacing:0.02em}
+    .hero-outcome{
+      font-size:0.88rem;color:rgba(255,255,255,0.55);line-height:1.65;
+      margin-bottom:36px;padding-left:14px;border-left:2px solid rgba(245,166,35,0.5);
+    }
+    .hero-actions-row{display:flex;align-items:flex-start;gap:14px;flex-wrap:wrap;margin-bottom:12px}
+    .btn-subtext{font-size:0.7rem;color:var(--muted);margin-top:7px;letter-spacing:0.02em}
+
     /* ── TRUST BAR ── */
     .trust-bar{
       border-top:1px solid var(--border);
@@ -367,6 +414,10 @@
 
     /* ── RESPONSIVE ── */
     @media(max-width:900px){
+      .hero-split{grid-template-columns:1fr;gap:48px}
+      .hero-right{order:2;padding:0 10px}
+      .hero-image-wrap{aspect-ratio:4/3}
+      .notif-card{right:0;top:14px;min-width:190px}
       .story-grid,.about-grid{grid-template-columns:1fr}
       .story-right{order:-1}
       .how-steps{grid-template-columns:1fr;gap:28px}
@@ -379,6 +430,10 @@
     @media(max-width:600px){
       section{padding:70px 0}
       .hero{min-height:auto;padding:90px 0 70px}
+      .hero-image-wrap{aspect-ratio:1}
+      .notif-card{right:-4px;top:12px;min-width:unset;width:calc(100% - 16px)}
+      .hero-actions-row{flex-direction:column;width:100%}
+      .btn-primary,.btn-ghost{width:100%;justify-content:center}
       .features-grid{grid-template-columns:1fr}
       .always-grid{grid-template-columns:1fr 1fr}
       .about-right{grid-template-columns:1fr 1fr}
@@ -425,47 +480,73 @@
   <div class="hero-bg"></div>
   <div class="hero-grid-lines"></div>
   <div class="container">
-    <div class="hero-inner">
-      <div class="hero-eyebrow">
-        <div class="hero-eyebrow-dot"></div>
-        <span class="hero-eyebrow-text">Serving Regional Queensland & Australia-wide</span>
-        <span class="tag tag-gold">Sites live in 5 days</span>
+    <div class="hero-split">
+
+      <!-- LEFT: COPY -->
+      <div class="hero-left">
+        <div class="hero-eyebrow" style="margin-bottom:24px">
+          <div class="hero-eyebrow-dot"></div>
+          <span class="hero-eyebrow-text">Serving regional Queensland & Australia-wide · Sites live in 5 days</span>
+        </div>
+        <h1>
+          Your next customer<br/>
+          is searching for you<br/>
+          <span class="gold">right now.</span>
+        </h1>
+        <p class="hero-sub">
+          Every day without a proper website is a day your competitor gets the call instead of you.
+          We build <strong>professional, automated websites</strong> for tradies, local retailers, salons,
+          and regional service businesses — without the $5,000 upfront bill, the tech headaches, or the waiting.
+        </p>
+        <p class="hero-outcome">
+          Turn more website visitors into calls, bookings, and walk-ins — even while you're on the tools.
+        </p>
+        <div class="hero-actions-row">
+          <div>
+            <button onclick="openModal()" class="btn-primary">
+              Get my site live in 5 days
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+            <div class="btn-subtext">Free 15-minute chat · No obligation</div>
+          </div>
+          <button onclick="openModal()" class="btn-ghost">Book my free 15-min chat</button>
+        </div>
+        <div class="hero-proof">
+          <div class="proof-item">
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Live in 5 business days</span>
+          </div>
+          <div class="proof-item">
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>$0 setup fee</span>
+          </div>
+          <div class="proof-item">
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>12-month minimum term</span>
+          </div>
+          <div class="proof-item">
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>100% Aussie-based support</span>
+          </div>
+        </div>
       </div>
-      <h1>
-        Your next customer<br/>
-        is searching for you<br/>
-        <span class="gold">right now.</span>
-      </h1>
-      <p class="hero-sub">
-        Every day without a proper website is a day your competitor gets the call instead of you.
-        We build <strong>professional, automated websites</strong> for local Aussie businesses —
-        without the $5,000 upfront bill, the tech headaches, or the waiting.
-      </p>
-      <div class="hero-actions">
-        <button onclick="openModal()" class="btn-primary">
-          Get my site live in 5 days
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </button>
-        <a href="#how-it-works" class="btn-ghost">See how it works</a>
-      </div>
-      <div class="hero-proof">
-        <div class="proof-item">
-          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-          <span>$0 setup cost</span>
-        </div>
-        <div class="proof-item">
-          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-          <span>Live in 5 business days</span>
-        </div>
-        <div class="proof-item">
-          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-          <span>Cancel anytime after 12 months</span>
-        </div>
-        <div class="proof-item">
-          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-          <span>SSL included on every plan</span>
+
+      <!-- RIGHT: IMAGE + NOTIFICATION CARD -->
+      <div class="hero-right">
+        <div class="hero-image-wrap">
+          <div class="hero-img-tag">Hero photo — real image to follow</div>
+          <!-- Phone notification overlay -->
+          <div class="notif-card">
+            <div class="notif-icon">📲</div>
+            <div>
+              <div class="notif-title">New website enquiry</div>
+              <div class="notif-sub">Kitchen reno quote · 07 4XX XXX</div>
+              <div class="notif-time">From your website · Just now</div>
+            </div>
+          </div>
         </div>
       </div>
+
     </div>
   </div>
 </section>
