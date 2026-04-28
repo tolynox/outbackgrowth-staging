@@ -8,6 +8,7 @@
   <link rel="icon" type="image/svg+xml" href="favicon.svg"/>
   <link rel="alternate icon" href="favicon.svg"/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     :root{
@@ -134,6 +135,16 @@
     .proof-item{display:flex;align-items:center;gap:8px}
     .proof-item svg{width:16px;height:16px;stroke:var(--green);fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
     .proof-item span{font-size:0.82rem;color:var(--muted);font-weight:500}
+
+    /* ── LUCIDE ICONS ── */
+    .lucide-icon{display:block;stroke:currentColor;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+    .feature-icon .lucide-icon,.fix-icon .lucide-icon{width:22px;height:22px}
+    .feature-icon-gold,.fix-icon{color:var(--gold)}
+    .feature-icon-blue{color:var(--blue)}
+    .pain-icon{display:flex;align-items:center;justify-content:center;color:rgba(239,68,68,0.85)}
+    .pain-icon .lucide-icon{width:18px;height:18px}
+    .always-item-icon{display:flex;align-items:center;justify-content:center;color:var(--gold)}
+    .always-item-icon .lucide-icon{width:24px;height:24px}
 
     /* ── HERO SPLIT LAYOUT ── */
     .hero-split{display:grid;grid-template-columns:58fr 42fr;gap:64px;align-items:center;position:relative;z-index:1}
@@ -598,15 +609,15 @@
         <p><strong>You're losing customers you don't even know you're losing.</strong></p>
         <div class="story-pain">
           <div class="pain-item">
-            <span class="pain-icon">💸</span>
+            <span class="pain-icon"><i data-lucide="banknote" class="lucide-icon"></i></span>
             <span class="pain-text">Traditional web agencies quote $3,000–$6,000 upfront — before you see a single result</span>
           </div>
           <div class="pain-item">
-            <span class="pain-icon">⏳</span>
+            <span class="pain-icon"><i data-lucide="clock" class="lucide-icon"></i></span>
             <span class="pain-text">Projects drag on for months while your competitor keeps getting the calls</span>
           </div>
           <div class="pain-item">
-            <span class="pain-icon">🤷</span>
+            <span class="pain-icon"><i data-lucide="triangle-alert" class="lucide-icon"></i></span>
             <span class="pain-text">You end up with a site that looks okay but doesn't actually bring you any business</span>
           </div>
         </div>
@@ -616,28 +627,28 @@
           <span class="tag tag-gold">The Outback Growth Way</span>
         </div>
         <div class="fix-card">
-          <div class="fix-icon">⚡</div>
+          <div class="fix-icon"><i data-lucide="zap" class="lucide-icon"></i></div>
           <div>
             <div class="fix-title">Done in days, not months</div>
             <div class="fix-desc">We have a proven system. You give us 30 minutes of your time. We deliver a live, professional website in 5 business days — guaranteed.</div>
           </div>
         </div>
         <div class="fix-card">
-          <div class="fix-icon">🤖</div>
+          <div class="fix-icon"><i data-lucide="bot" class="lucide-icon"></i></div>
           <div>
             <div class="fix-title">It works while you're on the tools</div>
             <div class="fix-desc">When someone enquires through your site, they get an instant SMS and email reply — automatically. No more missed leads while you're busy on a job.</div>
           </div>
         </div>
         <div class="fix-card">
-          <div class="fix-icon">💰</div>
+          <div class="fix-icon"><i data-lucide="banknote" class="lucide-icon"></i></div>
           <div>
             <div class="fix-title">No big upfront hit to your cash flow</div>
             <div class="fix-desc">We've removed the $0 setup fee. One simple monthly payment, and you own a fully managed online presence that keeps working for you, month after month.</div>
           </div>
         </div>
         <div class="fix-card">
-          <div class="fix-icon">🇦🇺</div>
+          <div class="fix-icon"><i data-lucide="headphones" class="lucide-icon"></i></div>
           <div>
             <div class="fix-title">Local support, not an overseas call centre</div>
             <div class="fix-desc">When you need something changed, you're talking to us — Aussies who understand regional business. Not a ticket queue that takes 3 days to respond.</div>
@@ -693,47 +704,47 @@
     </div>
     <div class="features-grid">
       <div class="feature-card">
-        <div class="feature-icon feature-icon-gold">📱</div>
+        <div class="feature-icon feature-icon-gold"><i data-lucide="smartphone" class="lucide-icon"></i></div>
         <h3>Mobile-first design</h3>
         <p>Most of your customers are searching from their phones. Your site looks perfect on every screen — phone, tablet, desktop.</p>
       </div>
       <div class="feature-card">
-        <div class="feature-icon feature-icon-gold">🔒</div>
+        <div class="feature-icon feature-icon-gold"><i data-lucide="shield-check" class="lucide-icon"></i></div>
         <h3>SSL Security Certificate</h3>
         <p>The padlock in the browser. Every site we build comes with a free, auto-renewing SSL certificate. Secure by default — zero extra cost.</p>
       </div>
       <div class="feature-card">
-        <div class="feature-icon feature-icon-gold">⚡</div>
+        <div class="feature-icon feature-icon-gold"><i data-lucide="zap" class="lucide-icon"></i></div>
         <h3>Instant lead capture</h3>
         <p>Professional enquiry forms that actually work. When someone fills it out, you get notified immediately — and so does the customer.</p>
       </div>
       <div class="feature-card">
-        <div class="feature-icon feature-icon-blue">📞</div>
+        <div class="feature-icon feature-icon-blue"><i data-lucide="phone" class="lucide-icon"></i></div>
         <h3>Click-to-call buttons</h3>
         <p>One tap on your number and the customer is calling you. Tradies get more calls. Salons get more bookings. It's that simple.</p>
       </div>
       <div class="feature-card">
-        <div class="feature-icon feature-icon-blue">📍</div>
+        <div class="feature-icon feature-icon-blue"><i data-lucide="map-pin" class="lucide-icon"></i></div>
         <h3>Google Maps embedded</h3>
         <p>Your location pinned on every site. Customers know exactly where you are and how to get to you. Critical for foot traffic businesses.</p>
       </div>
       <div class="feature-card">
-        <div class="feature-icon feature-icon-blue">🛡️</div>
+        <div class="feature-icon feature-icon-blue"><i data-lucide="server" class="lucide-icon"></i></div>
         <h3>Hosting, maintenance & updates</h3>
         <p>We look after everything technical. Software updates, security patches, uptime monitoring. You'll never get a surprise bill from us.</p>
       </div>
       <div class="feature-card">
-        <div class="feature-icon feature-icon-gold">🔍</div>
+        <div class="feature-icon feature-icon-gold"><i data-lucide="search" class="lucide-icon"></i></div>
         <h3>Basic SEO foundation</h3>
         <p>Built to be found. Your site is structured so Google can read and rank it — giving you a head start on showing up in local search results.</p>
       </div>
       <div class="feature-card">
-        <div class="feature-icon feature-icon-gold">📧</div>
+        <div class="feature-icon feature-icon-gold"><i data-lucide="mail" class="lucide-icon"></i></div>
         <h3>Automated email response</h3>
         <p>The moment an enquiry comes in, the customer gets a professional confirmation email. You look reliable and responsive even when you're flat out.</p>
       </div>
       <div class="feature-card">
-        <div class="feature-icon feature-icon-blue">🇦🇺</div>
+        <div class="feature-icon feature-icon-blue"><i data-lucide="headphones" class="lucide-icon"></i></div>
         <h3>Australian-based support</h3>
         <p>Call us, email us — you're talking to a real person who knows regional Australian business. We respond within 30 minutes during business hours.</p>
       </div>
@@ -840,42 +851,42 @@
     </div>
     <div class="always-grid">
       <div class="always-item">
-        <div class="always-item-icon">🔒</div>
+        <div class="always-item-icon"><i data-lucide="shield-check" class="lucide-icon"></i></div>
         <div class="always-item-label">SSL Certificate</div>
         <div class="always-item-sub">HTTPS on every site, included free</div>
       </div>
       <div class="always-item">
-        <div class="always-item-icon">🚀</div>
+        <div class="always-item-icon"><i data-lucide="globe" class="lucide-icon"></i></div>
         <div class="always-item-label">Fast Hosting</div>
         <div class="always-item-sub">Reliable, global CDN included</div>
       </div>
       <div class="always-item">
-        <div class="always-item-icon">🛠️</div>
+        <div class="always-item-icon"><i data-lucide="wrench" class="lucide-icon"></i></div>
         <div class="always-item-label">Maintenance</div>
         <div class="always-item-sub">Updates & uptime covered</div>
       </div>
       <div class="always-item">
-        <div class="always-item-icon">🇦🇺</div>
+        <div class="always-item-icon"><i data-lucide="headphones" class="lucide-icon"></i></div>
         <div class="always-item-label">Aussie Support</div>
         <div class="always-item-sub">Real person, 30-min response</div>
       </div>
       <div class="always-item">
-        <div class="always-item-icon">📱</div>
+        <div class="always-item-icon"><i data-lucide="smartphone" class="lucide-icon"></i></div>
         <div class="always-item-label">Mobile-Ready</div>
         <div class="always-item-sub">Perfect on every screen</div>
       </div>
       <div class="always-item">
-        <div class="always-item-icon">📧</div>
+        <div class="always-item-icon"><i data-lucide="mail" class="lucide-icon"></i></div>
         <div class="always-item-label">Auto-Response</div>
         <div class="always-item-sub">Never miss an enquiry</div>
       </div>
       <div class="always-item">
-        <div class="always-item-icon">$0</div>
+        <div class="always-item-icon" style="font-size:1.1rem;font-weight:900;color:var(--gold)">$0</div>
         <div class="always-item-label">No Setup Fee</div>
         <div class="always-item-sub">Zero upfront cost</div>
       </div>
       <div class="always-item">
-        <div class="always-item-icon">📍</div>
+        <div class="always-item-icon"><i data-lucide="map-pin" class="lucide-icon"></i></div>
         <div class="always-item-label">Google Maps</div>
         <div class="always-item-sub">Embedded on every site</div>
       </div>
@@ -1081,23 +1092,12 @@
     </div>
     <div style="padding:0 20px 28px">
       <iframe
-        src="https://links.outbackgrowth.solutions/widget/form/iIL6eEkgFlkjOklDdpZh"
-        style="width:100%;height:672px;border:none;border-radius:3px"
-        id="inline-iIL6eEkgFlkjOklDdpZh"
-        data-layout="{'id':'INLINE'}"
-        data-trigger-type="alwaysShow"
-        data-trigger-value=""
-        data-activation-type="alwaysActivated"
-        data-activation-value=""
-        data-deactivation-type="neverDeactivate"
-        data-deactivation-value=""
-        data-form-name="Form 0"
-        data-height="672"
-        data-layout-iframe-id="inline-iIL6eEkgFlkjOklDdpZh"
-        data-form-id="iIL6eEkgFlkjOklDdpZh"
-        title="Form 0"
+        src="https://links.outbackgrowth.solutions/widget/booking/RlGLowTnNEMzvxMTaACg"
+        style="width:100%;min-height:600px;border:none;overflow:hidden;"
+        scrolling="no"
+        id="RlGLowTnNEMzvxMTaACg_1777373971321"
       ></iframe>
-      <script src="https://links.outbackgrowth.solutions/js/form_embed.js"></script>
+      <script src="https://links.outbackgrowth.solutions/js/form_embed.js" type="text/javascript"></script>
     </div>
   </div>
 </div>
@@ -1134,6 +1134,9 @@
       answer.classList.add('open');
     }
   }
+
+  // Initialise Lucide icons
+  lucide.createIcons();
 </script>
 
 </body>
