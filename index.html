@@ -426,6 +426,136 @@
     .footer-bottom p{font-size:0.75rem;color:var(--subtle)}
     .footer-bottom .made-with{font-size:0.75rem;color:var(--subtle)}
 
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp   { from{opacity:0;transform:translateY(28px)} to{opacity:1;transform:translateY(0)} }
+    @keyframes fadeIn   { from{opacity:0} to{opacity:1} }
+    @keyframes shimmer  { 0%{transform:translateX(-180%)} 100%{transform:translateX(220%)} }
+    @keyframes notifFloat { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+    @keyframes iconGlow { 0%,100%{box-shadow:0 0 0 0 rgba(245,166,35,0)} 50%{box-shadow:0 0 20px 4px rgba(245,166,35,0.18)} }
+    @keyframes stepPulse{ 0%,100%{box-shadow:0 0 0 6px rgba(245,166,35,0.04)} 50%{box-shadow:0 0 0 14px rgba(245,166,35,0.08),0 0 24px rgba(245,166,35,0.12)} }
+    @keyframes borderGlow{ 0%,100%{border-color:rgba(245,166,35,0.4)} 50%{border-color:rgba(245,166,35,0.75)} }
+
+    /* Hero entrance — staggered children */
+    .hero-left > *         { animation:fadeUp 0.75s ease both }
+    .hero-left > *:nth-child(1){ animation-delay:0.08s }
+    .hero-left > *:nth-child(2){ animation-delay:0.22s }
+    .hero-left > *:nth-child(3){ animation-delay:0.36s }
+    .hero-left > *:nth-child(4){ animation-delay:0.48s }
+    .hero-left > *:nth-child(5){ animation-delay:0.58s }
+    .hero-left > *:nth-child(6){ animation-delay:0.68s }
+    .hero-right             { animation:fadeIn 1s ease 0.3s both }
+    .notif-card             { animation:notifFloat 5s ease-in-out 1.8s infinite }
+
+    /* Button shimmer */
+    .btn-primary{ position:relative;overflow:hidden }
+    .btn-primary::after{
+      content:'';position:absolute;inset:0;
+      background:linear-gradient(90deg,transparent 0%,rgba(255,255,255,0.18) 50%,transparent 100%);
+      transform:translateX(-180%);transition:none;pointer-events:none;
+    }
+    .btn-primary:hover::after{ transform:translateX(220%);transition:transform 0.55s ease }
+
+    /* Scroll-reveal base */
+    .reveal{
+      opacity:0;transform:translateY(26px);
+      transition:opacity 0.65s ease var(--delay,0s),transform 0.65s ease var(--delay,0s);
+    }
+    .reveal.visible{ opacity:1;transform:translateY(0) }
+
+    /* Enhanced icon containers */
+    .feature-icon-gold{
+      background:radial-gradient(circle at 38% 32%,rgba(245,166,35,0.30) 0%,rgba(245,166,35,0.07) 100%);
+      border:1px solid rgba(245,166,35,0.35);
+      transition:transform 0.25s ease,box-shadow 0.25s ease,border-color 0.25s ease;
+    }
+    .feature-icon-gold::before{
+      content:'';position:absolute;inset:0;border-radius:10px;
+      background:linear-gradient(135deg,rgba(255,255,255,0.10) 0%,transparent 55%);
+      pointer-events:none;
+    }
+    .feature-icon-blue{
+      background:radial-gradient(circle at 38% 32%,rgba(74,158,255,0.28) 0%,rgba(74,158,255,0.07) 100%);
+      border:1px solid rgba(74,158,255,0.35);
+      transition:transform 0.25s ease,box-shadow 0.25s ease,border-color 0.25s ease;
+    }
+    .feature-icon-blue::before{
+      content:'';position:absolute;inset:0;border-radius:10px;
+      background:linear-gradient(135deg,rgba(255,255,255,0.08) 0%,transparent 55%);
+      pointer-events:none;
+    }
+    .feature-icon{ position:relative }
+    .feature-card:hover .feature-icon-gold{
+      transform:scale(1.1) translateY(-1px);
+      box-shadow:0 6px 22px rgba(245,166,35,0.28);
+      border-color:rgba(245,166,35,0.65);
+    }
+    .feature-card:hover .feature-icon-blue{
+      transform:scale(1.1) translateY(-1px);
+      box-shadow:0 6px 22px rgba(74,158,255,0.25);
+      border-color:rgba(74,158,255,0.55);
+    }
+    .fix-icon{
+      position:relative;
+      background:radial-gradient(circle at 38% 32%,rgba(245,166,35,0.30) 0%,rgba(245,166,35,0.07) 100%);
+      border:1px solid rgba(245,166,35,0.35);
+      transition:transform 0.25s ease,box-shadow 0.25s ease,border-color 0.25s ease;
+    }
+    .fix-icon::before{
+      content:'';position:absolute;inset:0;border-radius:10px;
+      background:linear-gradient(135deg,rgba(255,255,255,0.10) 0%,transparent 55%);
+      pointer-events:none;
+    }
+    .fix-card:hover .fix-icon{
+      transform:scale(1.1) translateY(-1px);
+      box-shadow:0 6px 22px rgba(245,166,35,0.28);
+      border-color:rgba(245,166,35,0.65);
+    }
+
+    /* Pain icon box */
+    .pain-icon{
+      width:34px;height:34px;min-width:34px;border-radius:9px;
+      background:rgba(239,68,68,0.10);
+      border:1px solid rgba(239,68,68,0.22);
+      transition:background 0.2s,border-color 0.2s;
+    }
+    .pain-item:hover .pain-icon{
+      background:rgba(239,68,68,0.16);
+      border-color:rgba(239,68,68,0.38);
+    }
+
+    /* Always-included icons */
+    .always-item-icon{
+      width:52px;height:52px;border-radius:13px;margin:0 auto 14px;
+      background:radial-gradient(circle at 38% 32%,rgba(245,166,35,0.26) 0%,rgba(245,166,35,0.06) 100%);
+      border:1px solid rgba(245,166,35,0.28);
+      position:relative;
+      transition:transform 0.22s ease,box-shadow 0.22s ease,border-color 0.22s ease;
+    }
+    .always-item-icon::before{
+      content:'';position:absolute;inset:0;border-radius:13px;
+      background:linear-gradient(135deg,rgba(255,255,255,0.09) 0%,transparent 55%);
+      pointer-events:none;
+    }
+    .always-item-icon .lucide-icon{ width:22px;height:22px }
+    .always-item:hover .always-item-icon{
+      transform:translateY(-4px) scale(1.06);
+      box-shadow:0 10px 28px rgba(245,166,35,0.22);
+      border-color:rgba(245,166,35,0.55);
+    }
+
+    /* How-it-works step numbers */
+    .step-num{
+      transition:box-shadow 0.35s ease,background 0.35s ease;
+      box-shadow:0 0 0 6px rgba(245,166,35,0.04);
+    }
+    .how-step:hover .step-num{
+      box-shadow:0 0 0 12px rgba(245,166,35,0.07),0 0 28px rgba(245,166,35,0.18);
+      background:rgba(245,166,35,0.06);
+    }
+
+    /* Notif card glow border animation */
+    .notif-card{ animation:notifFloat 5s ease-in-out 1.8s infinite,borderGlow 3s ease-in-out 2s infinite }
+
     /* ── RESPONSIVE ── */
     @media(max-width:900px){
       .hero-split{grid-template-columns:1fr;gap:48px}
@@ -1134,6 +1264,59 @@
       answer.classList.add('open');
     }
   }
+
+  // ── SCROLL REVEAL ──
+  (function(){
+    const stagger = [
+      { sel:'.feature-card',  gap:0.10 },
+      { sel:'.fix-card',      gap:0.10 },
+      { sel:'.pain-item',     gap:0.12 },
+      { sel:'.price-card',    gap:0.13 },
+      { sel:'.always-item',   gap:0.07 },
+      { sel:'.how-step',      gap:0.15 },
+      { sel:'.faq-item',      gap:0.07 },
+    ];
+    stagger.forEach(({sel, gap}) => {
+      document.querySelectorAll(sel).forEach((el, i) => {
+        el.classList.add('reveal');
+        el.style.setProperty('--delay', i * gap + 's');
+      });
+    });
+    ['.section-header','.story-left','.story-right','.about-left','.about-right','.trust-bar'].forEach(sel => {
+      document.querySelectorAll(sel).forEach(el => el.classList.add('reveal'));
+    });
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); } });
+    }, { threshold:0.10, rootMargin:'0px 0px -30px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  })();
+
+  // ── COUNTER ANIMATION ──
+  (function(){
+    function animateNum(el){
+      const inner = el.firstChild;
+      const raw = inner ? inner.textContent.trim() : el.textContent.trim();
+      const match = raw.match(/^([^0-9]*)(\d+(?:\.\d+)?)([^0-9]*)$/);
+      if(!match) return;
+      const [,pre,numStr,suf] = match;
+      const target = parseFloat(numStr);
+      const isInt = !numStr.includes('.');
+      const dur = 1300, t0 = performance.now();
+      const span = el.querySelector('span');
+      (function tick(now){
+        const p = Math.min((now-t0)/dur,1);
+        const ease = 1-Math.pow(1-p,3);
+        const val = isInt ? Math.round(ease*target) : (ease*target).toFixed(1);
+        if(span){ el.childNodes[0].textContent = pre+val; }
+        else     { el.textContent = pre+val+suf; }
+        if(p<1) requestAnimationFrame(tick);
+      })(t0);
+    }
+    const co = new IntersectionObserver(entries => {
+      entries.forEach(e => { if(e.isIntersecting){ animateNum(e.target); co.unobserve(e.target); } });
+    }, { threshold:0.6 });
+    document.querySelectorAll('.trust-num, .about-stat-num').forEach(el => co.observe(el));
+  })();
 
   // Initialise Lucide icons
   lucide.createIcons();
